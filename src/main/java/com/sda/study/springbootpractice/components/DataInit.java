@@ -18,6 +18,8 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
+ * Component to initalize data on application startup
+ *
  * @author Bahadir Tasli
  * @Date 3/20/2023
  */
@@ -44,13 +46,12 @@ public class DataInit {
     }
 
 
-
     // PRIVATE METHODS //
     private void initSchool() {
         System.out.println("Starting school initialization..");
         School school = new School();
-        school.setName("Tartuuu University");
-        school.setAddress("Ulikooli 18, Tartuu");
+        school.setName("Tart University");
+        school.setAddress("Ulikooli 18, Tartu");
         school.setPhone("+372 55555555");
 
         try {
@@ -67,9 +68,9 @@ public class DataInit {
         System.out.println("Starting course initialization");
 
         try {
-            School searchSchool = schoolService.findSchoolByName("Tartu University");
+            School searchSchool = schoolService.findSchoolByName("Tart University");
             Course course = new Course();
-            course.setName("Maths");
+            course.setName("Mathematics");
             course.setSchool(searchSchool);
             course.setStartDate(LocalDate.now());
             course.setDurationInDays(100);
@@ -81,8 +82,9 @@ public class DataInit {
                 courseService.createCourse(course);
 
             }
+
             Course course1 = new Course();
-            course1.setName("Science");
+            course1.setName("Science1");
             course1.setSchool(searchSchool);
             course1.setStartDate(LocalDate.now());
             course1.setDurationInDays(100);
@@ -98,19 +100,19 @@ public class DataInit {
     private void initTeacher(){
         System.out.println("Starting teacher initialization");
 
-
         try {
-            Course course = courseService.findCourseByName("Maths");
-            Course course1 = courseService.findCourseByName("Science");
+            Course course = courseService.findCourseByName("Mathematics");
+            Course course1 = courseService.findCourseByName("Science1");
+
             Teacher teacher = new Teacher();
-            teacher.setName("Vinod");
+            teacher.setName("Vinod John");
             teacher.setGender(Gender.MALE);
             teacher.setEmail("vinod@gmail.com");
             teacher.setSpecializedCourses(Arrays.asList(course,course1));
 
             try {
                 Teacher searchTeacher = teacherService.findTeacherByName(teacher.getName());
-                System.out.println("CaN not pre-initialize teacher : " + teacher.getName());
+                System.out.println("Cannot pre-initialize teacher : " + teacher.getName());
             } catch (TeacherNotFoundException e) {
                 teacherService.createTeacher(teacher);
             }
@@ -125,12 +127,12 @@ public class DataInit {
         System.out.println("Starting student initialization");
 
         try {
-            Course course = courseService.findCourseByName("Maths");
+            Course course = courseService.findCourseByName("Mathematics");
 
             Student student = new Student();
-            student.setName("Bahadir");
-            student.setAge(30);
-            student.setEmail("bahadir@gmail.com");
+            student.setName("Mahmut");
+            student.setAge(29);
+            student.setEmail("m.bahadir@gmail.com");
             student.setGrade(4);
             student.setGender(Gender.MALE);
             student.setCourses(Collections.singletonList(course));

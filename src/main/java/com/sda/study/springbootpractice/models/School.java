@@ -17,7 +17,7 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class School extends Auditable <String> implements Serializable /*Java.io*/ {
+public class School extends Auditable <String> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

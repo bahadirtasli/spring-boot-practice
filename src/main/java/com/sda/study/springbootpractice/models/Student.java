@@ -15,7 +15,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Student extends Auditable <String> implements Serializable /*Java.io*/ {
+public class Student extends Auditable <String> implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,7 +33,7 @@ public class Student extends Auditable <String> implements Serializable /*Java.i
 
     private float grade;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<Course> courses;
 
     private boolean isActive;

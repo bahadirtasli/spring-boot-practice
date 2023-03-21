@@ -1,21 +1,17 @@
 package com.sda.study.springbootpractice.services;
 
-/**
- * @author Bahadir Tasli
- * @Date 3/16/2023
- */
-
-
-import com.sda.study.springbootpractice.exceptions.CourseNotFoundException;
 import com.sda.study.springbootpractice.exceptions.StudentNotFoundException;
 import com.sda.study.springbootpractice.models.Student;
 
 import java.util.List;
 
 /**
+ * To handle all Student related operations
+ *
  * @author Bahadir Tasli
- * @Date 2/28/2023
+ * @Date 3/16/2023
  */
+
 
 public interface StudentService {
 
@@ -24,8 +20,7 @@ public interface StudentService {
      *
      * @param student Student
      */
-
-    void createStudent(Student student) throws CourseNotFoundException;
+    void createStudent(Student student);
 
 
     /**

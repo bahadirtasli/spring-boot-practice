@@ -1,6 +1,5 @@
 package com.sda.study.springbootpractice.services.implementations;
 
-import com.sda.study.springbootpractice.exceptions.CourseNotFoundException;
 import com.sda.study.springbootpractice.exceptions.StudentNotFoundException;
 import com.sda.study.springbootpractice.models.Student;
 import com.sda.study.springbootpractice.repositories.StudentRepository;
@@ -14,11 +13,12 @@ import java.util.Optional;
 
 /**
  * @author Bahadir Tasli
- * @Date 3/20/2023
+ * @Date 3/21/2023
  */
 @Service
 @Transactional
 public class StudentServiceImpl implements StudentService {
+
     @Autowired
     private StudentRepository studentRepository;
 
@@ -32,10 +32,9 @@ public class StudentServiceImpl implements StudentService {
     public Student findStudentById(Long id) throws StudentNotFoundException {
         Optional<Student> studentOptional = studentRepository.findById(id);
 
-        if(studentOptional.isEmpty()) {
+        if (studentOptional.isEmpty()) {
             throw new StudentNotFoundException(id);
         }
-
         return studentOptional.get();
     }
 
@@ -45,15 +44,14 @@ public class StudentServiceImpl implements StudentService {
 
         if(studentOptional.isEmpty()) {
             throw new StudentNotFoundException(name);
-        }
-
-        return studentOptional.get();
+        }         return studentOptional.get();
     }
 
     @Override
     public List<Student> findAllStudents() {
         return studentRepository.findAll();
     }
+
 
     @Override
     public void updateStudent(Student student) throws StudentNotFoundException {

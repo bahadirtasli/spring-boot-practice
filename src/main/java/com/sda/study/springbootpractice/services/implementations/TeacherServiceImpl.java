@@ -13,14 +13,13 @@ import java.util.Optional;
 
 /**
  * @author Bahadir Tasli
- * @Date 3/20/2023
+ * @Date 3/21/2023
  */
 @Service
 @Transactional
 public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private TeacherRepository teacherRepository;
-
     @Override
     public void createTeacher(Teacher teacher) {
         teacher.setActive(true);
